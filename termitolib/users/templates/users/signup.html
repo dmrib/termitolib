@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}{{block.super}}Sign Up{% endblock %}
+
+{% block content %}
+<form class='text-left' method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Register" />
+{% endblock %}
