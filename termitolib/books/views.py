@@ -9,6 +9,7 @@ class BookCreateView(LoginRequiredMixin, CreateView):
     template_name = 'books/book_register.html'
     form_class = BookForm
     success_url = '/'
+    login_url = '/login'
 
     def form_valid(self, form):
         book = form.save(commit=False)

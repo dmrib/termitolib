@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ block.super }}Login{% endblock %}
+
+{% block page_title %}Login{% endblock %}
+
+{% block content %}
+{% if form.errors %}
+<p class="text-center">Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next != "/" and next is not None %}
+    {% if user.is_authenticated %}
+    <p class="text-center">Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+    {% else %}
+    <p class="text-center">Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}"> {% csrf_token %}
+    <center>
+        {{ form.as_p }}
+        <input type="submit" value="Login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </center>
+</form>
+<br />
+<p class="text-center">Need to <a href='{% url "users:signup" %}'>register</a>?</p>
+{% endblock %}
