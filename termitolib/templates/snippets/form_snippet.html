@@ -1,0 +1,13 @@
+{% if form.errors.non_field_errors %}
+{{ form.errors.non_field_errors }}
+{% endif %}
+<form class='text-left' method="post" style="margin-top:25px;"> {% csrf_token %}
+    <center>
+        <div class="form-group">
+            <table>
+                {{ form.as_table }}
+            </table>
+        </div>
+        <button type="submit" class="btn btn-default">Register</button>
+    </center>
+</form>
