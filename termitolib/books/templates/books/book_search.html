@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ block.super }}Search{% endblock %}
+
+{% block page_title %}Search{% endblock %}
+
+{% block content %}
+<form id="searchform" method="POST">
+</form>
+      <input class="searchfield" name="q" type="text" placeholder="Search terms...">
+      <button type="button" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+{% endblock %}
