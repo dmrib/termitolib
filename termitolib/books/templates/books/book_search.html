@@ -5,9 +5,10 @@
 {% block page_title %}Search{% endblock %}
 
 {% block content %}
-<form id="searchform" method="POST">
-</form>
-      <input class="searchfield" name="q" type="text" placeholder="Search terms...">
-      <button type="button" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+<center>
+    <form id="searchform" method="GET" action="{% url 'books:search-result' %}">{% csrf_token %}
+          <input class="searchfield" name="term" type="text" placeholder="Search terms...">
+          <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
     </form>
+</center>
 {% endblock %}

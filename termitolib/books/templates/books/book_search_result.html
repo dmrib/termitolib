@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}{{block.super}}Search Result{% endblock %}
+
+{% block page_title %}Search results{% endblock %}
+
+{% block entire_page_content %}
+{% if books %}
+<div class=container>
+
+</div>
+    <div class="table-responsive">
+    <table class="table table-striped text-center align-right">
+        <thead>
+          <tr>
+            <th>Registered by</th>
+            <th>Name</th>
+            <th>Authors</th>
+            <th>Tags</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Shelf</th>
+            <th>Code</th>
+            <th>Copies</th>
+            <th>Registered</th>
+            <th>Last updated</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+          <tr>
+            <td>{{book.registered_by.username}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.authors}}</td>
+            <td>{{book.tags}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.shelf}}</td>
+            <td>{{book.code}}</td>
+            <td>{{book.copies}}</td>
+            <td>{{book.registered|date}}</td>
+            <td>{{book.updated|date}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    {% else %}
+        <p class="text-center">Sorry, no matches for your seach.</p>
+    {% endif %}
+{% endblock %}
