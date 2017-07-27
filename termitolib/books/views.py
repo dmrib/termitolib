@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, DeleteView
 from django.views.generic.edit import ProcessFormView
 
 from .forms import BookForm
@@ -18,6 +18,7 @@ class BookCreateView(LoginRequiredMixin, CreateView):
         book = form.save(commit=False)
         book.registered_by = self.request.user
         return super(BookCreateView, self).form_valid(form)
+
 
 class BookSearchListView(ListView):
     template_name = 'books/book_search_result.html'
@@ -38,4 +39,10 @@ class BookSearchListView(ListView):
 
 class BookDetailView(DetailView):
     model = Book
+    context_object_name = 'book'
+
+
+class BookDeleteView(DeleteView):
+    model = Book
+    success_url = '/'
     context_object_name = 'book'

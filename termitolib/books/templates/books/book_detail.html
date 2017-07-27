@@ -50,4 +50,13 @@
             </tr>
     </table>
 </div>
+<center>
+    {% if request.user.is_staff %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-success">Lend</button>
+        <button type="button" class="btn btn-warning">Update</button>
+        <a href="{{ book.get_absolute_url }}/delete"><button type="button" class="btn btn-danger">Delete</button></a>
+    </div>
+    {% endif %}
+</center>
 {% endblock%}

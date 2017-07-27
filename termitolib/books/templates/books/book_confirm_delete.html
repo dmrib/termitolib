@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block page_title %}Delete {{book.title}}{% endblock %}
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete <b>{{ book.name }}</b>?</p>
+     <center>
+         <br />
+         <button type="submit" class="btn btn-default">Confirm</button>
+     </center>
+</form>
+{% endblock %}
