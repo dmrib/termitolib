@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block page_title %}{{ book.name }}{% endblock %}
+
+{% block content %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>{{ book.name }}</td>
+            </tr>
+            <tr>
+                <td>Registered by</td>
+                <td>{{ book.registered_by.username }}</td>
+            </tr>
+            <tr>
+                <td>Authors</td>
+                <td>{{ book.authors }}</td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>{{ book.tags }}</td>
+            </tr>
+            <tr>
+                <td>Publisher</td>
+                <td>{{ book.publisher }}</td>
+            </tr>
+            <tr>
+                <td>ISBN</td>
+                <td>{{ book.isbn }}</td>
+            </tr>
+            <tr>
+                <td>Shelf</td>
+                <td>{{ book.shelf }}</td>
+            </tr>
+            <tr>
+                <td>Code</td>
+                <td>{{ book.code }}</td>
+            </tr>
+            <tr>
+                <td>Registered</td>
+                <td>{{ book.registered|date }}</td>
+            </tr>
+            <tr>
+                <td>Last updated</td>
+                <td>{{ book.updated|date }}</td>
+            </tr>
+    </table>
+</div>
+{% endblock%}

@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from django.views.generic.edit import ProcessFormView
 
 from .forms import BookForm
@@ -34,3 +34,8 @@ class BookSearchListView(ListView):
                                      Q(code__icontains=term)
                  )
         return result
+
+
+class BookDetailView(DetailView):
+    model = Book
+    context_object_name = 'book'

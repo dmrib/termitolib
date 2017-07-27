@@ -24,5 +24,8 @@ class Book(models.Model):
     def get_tags(self):
         return self.tags.split(',')
 
+    def get_absolute_url(self):
+        return f"/books/{self.pk}" 
+
     class Meta:
         ordering = ['name', 'code']
