@@ -19,7 +19,7 @@
 
 <form method="post" action="{% url 'login' %}"> {% csrf_token %}
     <center>
-        {{ form.as_p }}
+        {% include 'snippets/form_snippet.html' %}
         <input type="submit" value="Login" />
         <input type="hidden" name="next" value="{{ next }}" />
     </center>

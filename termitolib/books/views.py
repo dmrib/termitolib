@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, DetailView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
 from django.views.generic.edit import ProcessFormView
+from django.urls import reverse
 
 from .forms import BookForm
 from .models import Book
@@ -46,3 +47,13 @@ class BookDeleteView(DeleteView):
     model = Book
     success_url = '/'
     context_object_name = 'book'
+
+class BookUpdateView(UpdateView):
+    model = Book
+    context_object_name = 'book'
+    template_name = 'books/book_update_form.html'
+    fields = ['name', 'authors', 'tags', 'publisher', 'isbn', 'shelf', 'code',
+              'copies']
+
+    def get_success_url(self):
+        return '/books/' + self.kwargs.get('pk')

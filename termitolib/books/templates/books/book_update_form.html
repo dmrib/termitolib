@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block page_title %}Edit {{ book.name }}{% endblock %}
+
+{% block content %}
+{% include 'snippets/form_snippet.html' %}
+{% endblock %}
