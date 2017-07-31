@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^users/', include('users.urls', namespace='users')),
-    url(r'^books/', include('books.urls', namespace='books'))
+    url(r'^books/', include('books.urls', namespace='books')),
+    url(r'^loans/', include('loans.urls', namespace='loans')),
 ]

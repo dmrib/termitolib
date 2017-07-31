@@ -43,12 +43,13 @@ class BookDetailView(DetailView):
     context_object_name = 'book'
 
 
-class BookDeleteView(DeleteView):
+class BookDeleteView(LoginRequiredMixin, DeleteView):
     model = Book
     success_url = '/'
     context_object_name = 'book'
 
-class BookUpdateView(UpdateView):
+
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     model = Book
     context_object_name = 'book'
     template_name = 'books/book_update_form.html'

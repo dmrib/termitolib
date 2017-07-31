@@ -53,7 +53,6 @@
 <center>
     {% if request.user.is_staff %}
     <div class="btn-group">
-        <a href='#'><button type="button" class="btn btn-success">Lend</button></a>
         <a href="{{ book.get_absolute_url }}/update"><button type="button" class="btn btn-warning">Update</button></a>
         <a href="{{ book.get_absolute_url }}/delete"><button type="button" class="btn btn-danger">Delete</button></a>
     </div>

@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.db import models
 
-
 class Book(models.Model):
     registered_by = models.ForeignKey(settings.AUTH_USER_MODEL)
     name = models.CharField(max_length=200, unique=True)
@@ -15,6 +14,9 @@ class Book(models.Model):
     registered = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['name', 'code']
+
     def __str__(self):
         return self.name
 
@@ -25,7 +27,4 @@ class Book(models.Model):
         return self.tags.split(',')
 
     def get_absolute_url(self):
-        return f"/books/{self.pk}" 
-
-    class Meta:
-        ordering = ['name', 'code']
+        return f"/books/{self.pk}"
