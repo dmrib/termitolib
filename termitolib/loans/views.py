@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView, DeleteView
 
 from .forms import LoanForm
 from .models import Loan
@@ -16,3 +16,17 @@ class LoanCreateView(LoginRequiredMixin, CreateView):
         loan.by = self.request.user
         loan.item = Book.objects.get(code=form.cleaned_data['code'])
         return super(LoanCreateView, self).form_valid(form)
+
+class LoansListView(ListView):
+    template_name = 'loans/loans_return.html'
+    context_object_name = 'loans'
+
+    def get_queryset(self):
+        result = Loan.objects.all()
+        return result
+
+
+class LoanDeleteView(LoginRequiredMixin, DeleteView):
+    model = Loan
+    success_url = '/'
+    context_object_name = 'loan'

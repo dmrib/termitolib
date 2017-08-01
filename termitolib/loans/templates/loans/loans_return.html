@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}{{block.super}}Loans{% endblock %}
+
+{% block page_title %}Loans{% endblock %}
+
+{% block entire_page_content %}
+{% if loans %}
+<div class=container>
+
+</div>
+    <div class="table-responsive">
+    <table class="table table-striped text-center align-right">
+        <thead>
+          <tr>
+            <th>Made by</th>
+            <th>Made to</th>
+            <th>Item</th>
+            <th>Loan Date</th>
+            <th>Return Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for loan in loans %}
+          <tr>
+            <td>{{loan.by.username}}</td>
+            <td>{{loan.to.username}}</td>
+            <td>{{loan.item.name}}</td>
+            <td>{{loan.loan_date|date}}</td>
+            <td>{{loan.return_date|date}}</td>
+            <td><a href="{{ loan.get_absolute_url }}/delete"><button type="button" class="btn btn-success">Return</button></a>
+</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    {% else %}
+        <p class="text-center">No active loans.</p>
+    {% endif %}
+{% endblock %}

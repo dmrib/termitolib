@@ -7,6 +7,8 @@ from books.models import Book
 
 def get_deadline():
     return datetime.datetime.today() + datetime.timedelta(days=7)
+
+    
 class Loan(models.Model):
     by = models.ForeignKey(settings.AUTH_USER_MODEL)
     to = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='to')
