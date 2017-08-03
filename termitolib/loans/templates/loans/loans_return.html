@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         {% for loan in loans %}
-          <tr>
+          <tr {% if loan.is_late %} class="danger"{% endif %}>
             <td>{{loan.by.username}}</td>
             <td>{{loan.to.username}}</td>
             <td>{{loan.item.name}}</td>
