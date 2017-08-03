@@ -1,15 +1,17 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import CreateView, ListView, DeleteView
 
 from .forms import LoanForm
 from .models import Loan
 from books.models import Book
 
-class LoanCreateView(LoginRequiredMixin, CreateView):
+class LoanCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = 'loans/loan_register.html'
     form_class = LoanForm
     success_url = '/'
     login_url = '/login'
+    permission_required = 'is_staff'
+
 
     def form_valid(self, form):
         loan = form.save(commit=False)
@@ -26,7 +28,8 @@ class LoansListView(ListView):
         return result
 
 
-class LoanDeleteView(LoginRequiredMixin, DeleteView):
+class LoanDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Loan
     success_url = '/'
     context_object_name = 'loan'
+    permission_required = 'is_staff'

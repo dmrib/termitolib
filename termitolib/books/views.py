@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
@@ -9,11 +9,12 @@ from .forms import BookForm
 from .models import Book
 
 
-class BookCreateView(LoginRequiredMixin, CreateView):
+class BookCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = 'books/book_register.html'
     form_class = BookForm
     success_url = '/'
     login_url = '/login'
+    permission_required = 'is_staff'
 
     def form_valid(self, form):
         book = form.save(commit=False)
@@ -43,18 +44,21 @@ class BookDetailView(DetailView):
     context_object_name = 'book'
 
 
-class BookDeleteView(LoginRequiredMixin, DeleteView):
+class BookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Book
     success_url = '/'
     context_object_name = 'book'
+    permission_required = 'is_staff'
 
 
-class BookUpdateView(LoginRequiredMixin, UpdateView):
+class BookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Book
     context_object_name = 'book'
     template_name = 'books/book_update_form.html'
     fields = ['name', 'authors', 'tags', 'publisher', 'isbn', 'shelf', 'code',
               'copies']
+    permission_required = 'is_staff'
+
 
     def get_success_url(self):
         return '/books/' + self.kwargs.get('pk')
