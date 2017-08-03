@@ -13,7 +13,6 @@
     <table class="table table-striped align-right">
         <thead>
           <tr>
-            <th>Made by</th>
             <th>Made to</th>
             <th>Item</th>
             <th>Loan Date</th>
@@ -23,13 +22,10 @@
         <tbody>
         {% for loan in loans %}
           <tr {% if loan.is_late %}class="danger"{% endif %}>
-            <td>{{loan.by.username}}</td>
             <td>{{loan.to.username}}</td>
             <td>{{loan.item.name}}</td>
             <td>{{loan.loan_date|date}}</td>
             <td>{{loan.return_date|date}}</td>
-            <td><a href="{{ loan.get_absolute_url }}/delete"><button type="button" class="btn btn-success">Return</button>{% if loan.is_late %}<a href="{{ loan.get_absolute_url }}/notify"><button type="button" class="btn btn-warning">Notify</button>{% endif %}</a>
-</a></td>
           </tr>
         {% endfor %}
         </tbody>

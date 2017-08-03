@@ -125,3 +125,10 @@ STATIC_URL = '/static/'
 # Redirect after login
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'termitolib@gmail.com'
+EMAIL_HOST_PASSWORD = 'termita62'
+EMAIL_PORT = 587

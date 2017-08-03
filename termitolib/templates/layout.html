@@ -22,15 +22,20 @@
                                 <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{% url 'books:search' %}">Search</a></li>
+                                    {% if user.is_staff %}
                                     <li><a href="{% url 'books:register' %}">Register</a></li>
+                                    {% endif %}
                                 </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Loans
                                 <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{% url 'loans:register' %}">Register</a></li>
+                                    {% if user.is_staff %}
                                     <li><a href="{% url 'loans:return' %}">Return</a></li>
+                                    <li><a href="{% url 'loans:register' %}">Register</a></li>
+                                    {% endif %}
+                                    <li><a href="{% url 'loans:myloans' %}">My loans</a></li>
                                 </ul>
                         </li>
                     </ul>

@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}{{block.super}}Notify{% endblock %}
+
+{% block page_title %}User notified{% endblock %}
+
+{% block content %}
+<p class="text-center" style="margin-top:80px;">
+    Message successfuly sent to {{ loan.to.username }}!
+</p>
+{% endblock %}
