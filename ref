@@ -1,0 +1,35 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF-8
+
+
+@Book{alez2012biological,
+  Title                    = {Biological Interactions: Amensalism, Antagonism, Ecological Facilitation, Competition, and More},
+  Author                   = {Alez, G.},
+  Publisher                = {Webster's Digital Services},
+  Year                     = {2012},
+
+  ISBN                     = {9781276202381},
+  Url                      = {https://books.google.com.br/books?id=PdjkuQAACAAJ}
+}
+
+@Book{araujo1977catálogo,
+  Title                    = {Cat{\'a}logo dos Isoptera do Novo Mundo},
+  Author                   = {Araujo, R.L.},
+  Publisher                = {Academia Brasileira de Ci{\^e}ncias},
+  Year                     = {1977},
+
+  Lccn                     = {79109859},
+  Url                      = {https://books.google.com.br/books?id=yylgAAAAMAAJ}
+}
+
+@Book{van2011gimp,
+  Title                    = {GIMP Bible},
+  Author                   = {van Gumster, J. and Shimonski, R.},
+  Publisher                = {Wiley},
+  Year                     = {2011},
+  Series                   = {Bible},
+
+  ISBN                     = {9781118081136},
+  Url                      = {https://books.google.com.br/books?id=XyipXlP-5fYC}
+}
+
